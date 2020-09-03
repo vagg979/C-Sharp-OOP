@@ -8,7 +8,15 @@ namespace ACM.BL
 {
     public class Customer
     {
-        public int CustomerID { get; private set; }
+        public Customer()
+        {
+
+        }
+        public Customer(int customerId)
+        {
+            CustomerId = customerId;
+        }
+        public int CustomerId { get; private set; }
         public string EmailAddress { get; set; }
 
         public string FirstName { get; set; }
@@ -43,6 +51,49 @@ namespace ACM.BL
             {
                 _lastName = value;
             }
+        }
+
+        /// <summary>
+        /// Saves the current customer
+        /// </summary>
+        /// <returns></returns>
+        public bool Save()
+        {
+            //
+            return true;
+        }
+
+        /// <summary>
+        /// Retrieve one customer
+        /// </summary>
+        /// <param name="customerId"></param>
+        public Customer Retrieve(int customerId)
+        {
+            //
+            return new Customer();
+        }
+
+        /// <summary>
+        /// Retrieve all customers
+        /// </summary>
+        public List<Customer> Retrieve()
+        {
+            //
+            return new List<Customer>();
+        }
+
+        /// <summary>
+        /// **Validate the customer data**
+        /// </summary>
+        /// <returns></returns>
+        public bool Validate()
+        {
+            var isValid = true;
+
+            if (string.IsNullOrWhiteSpace(LastName)) isValid = false;
+            if (string.IsNullOrWhiteSpace(EmailAddress)) isValid = false;
+
+            return isValid;
         }
 
     }
